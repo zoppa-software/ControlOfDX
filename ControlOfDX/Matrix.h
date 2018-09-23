@@ -181,6 +181,27 @@ namespace ControlOfDX
             return res;
         }
 
+        /// <summary>歪みマトリクスを取得する。</summary>
+        /// <param name="angleX">X変形角度。</param>
+        /// <param name="angleY">Y変形角度。</param>
+        /// <param name="center">変形中心。</param>
+        /// <return>マトリクス。</return>
+        static Matrix Skew(float angleX, float angleY, System::Drawing::PointF center)
+        {
+            Matrix res;
+            D2D1::Matrix3x2F max = D2D1::Matrix3x2F::Skew(
+                angleX,
+                angleY,
+                D2D1::Point2F(center.X, center.Y));
+            res._11 = max._11;
+            res._12 = max._12;
+            res._21 = max._21;
+            res._22 = max._22;
+            res._31 = max._31;
+            res._32 = max._32;
+            return res;
+        }
+
         /// <summary>積演算子。</summary>
         /// <param name="left">左辺。</param>
         /// <param name="right">右辺。</param>
