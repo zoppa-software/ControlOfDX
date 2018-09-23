@@ -68,6 +68,10 @@ namespace ControlOfDX
 		}
 
     internal:
+        /// <summary>画像リソースを使用する準備を行う。</summary>
+        /// <param name="name">レンダーターゲット。</param>
+        virtual void PreparationImage(ID2D1RenderTarget * renderTarget) {};
+
         /// <summary>リソースを使用する準備を行う。</summary>
         /// <param name="name">レンダーターゲット。</param>
         virtual void Preparation(ID2D1RenderTarget * renderTarget) = 0;

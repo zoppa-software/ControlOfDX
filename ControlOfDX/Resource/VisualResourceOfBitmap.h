@@ -81,9 +81,9 @@ namespace ControlOfDX
 
 #pragma region "methods"
     internal:
-        /// <summary>リソースを使用する準備を行う。</summary>
+        /// <summary>画像リソースを使用する準備を行う。</summary>
         /// <param name="name">レンダーターゲット。</param>
-        void Preparation(ID2D1RenderTarget * renderTarget) override
+        void PreparationImage(ID2D1RenderTarget * renderTarget) override
         {
             if (this->d2bitmap == NULL) {
                 // ビットマップ描画ターゲットの作成
@@ -101,8 +101,8 @@ namespace ControlOfDX
                     if (SUCCEEDED(hr)) {
                         // 描画ビットマップからビットマップ情報を取得し、コピーする
                         BitmapData ^ bmpData = this->bitmap->LockBits(System::Drawing::Rectangle(0, 0, this->bitmap->Width, this->bitmap->Height),
-                                                                      ImageLockMode::ReadWrite,
-                                                                      PixelFormat::Format32bppArgb);
+                            ImageLockMode::ReadWrite,
+                            PixelFormat::Format32bppArgb);
                         D2D1_RECT_U rec = D2D1::RectU(0, 0, this->bitmap->Width, this->bitmap->Height);
                         bitmap->CopyFromMemory(&rec, (void*)bmpData->Scan0, bmpData->Stride);
                         this->bitmap->UnlockBits(bmpData);
@@ -114,6 +114,10 @@ namespace ControlOfDX
                 }
             }
         }
+
+        /// <summary>リソースを使用する準備を行う。</summary>
+        /// <param name="name">レンダーターゲット。</param>
+        void Preparation(ID2D1RenderTarget * renderTarget) override {}
 
     internal:
         /// <summary>Direct2Dのインスタンスを取得する。</summary>

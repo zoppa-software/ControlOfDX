@@ -19,6 +19,9 @@ namespace ControlOfDX
         ref class BitmapBrushProperties
         {
         private:
+            // ブラシ
+            VisualResourceOfD2BitmapBrush ^ parent;
+
             // 引き延ばし設定
             ExtendModeParameter exX, exY;
 
@@ -29,27 +32,43 @@ namespace ControlOfDX
             /// <summary>横方向引き延ばし設定を設定、取得する。</summary>
             property ExtendModeParameter ExtendModeX {
                 ExtendModeParameter get() { return this->exX; }
-                void set(ExtendModeParameter val) { this->exX = val; }
+                void set(ExtendModeParameter val) {
+                    this->exX = val;
+                    if (this->parent != nullptr && this->parent->instance != NULL) {
+                        this->parent->instance->SetExtendModeX((D2D1_EXTEND_MODE)this->exX);
+                    }
+                }
             }
 
             /// <summary>縦方向引き延ばし設定を設定、取得する。</summary>
             property ExtendModeParameter ExtendModeY {
                 ExtendModeParameter get() { return this->exY; }
-                void set(ExtendModeParameter val) { this->exY = val; }
+                void set(ExtendModeParameter val) {
+                    this->exY = val;
+                    if (this->parent != nullptr && this->parent->instance != NULL) {
+                        this->parent->instance->SetExtendModeY((D2D1_EXTEND_MODE)this->exY);
+                    }
+                }
             }
 
             /// <summary>補間モードを設定、取得する。</summary>
             property BitmapInterpolationMode InterpolationMode {
                 BitmapInterpolationMode get() { return this->mode; }
-                void set(BitmapInterpolationMode val) { this->mode = val; }
+                void set(BitmapInterpolationMode val) {
+                    this->mode = val;
+                    if (this->parent != nullptr && this->parent->instance != NULL) {
+                        this->parent->instance->SetInterpolationMode((D2D1_BITMAP_INTERPOLATION_MODE)this->mode);
+                    }
+                }
             }
 
         public:
             /// <summary>コンストラクタ。</summary>
-            BitmapBrushProperties()
-                : exX(ExtendModeParameter::EXTEND_MODE_WRAP),
-                exY(ExtendModeParameter::EXTEND_MODE_WRAP),
-                mode(BitmapInterpolationMode::BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR)
+            BitmapBrushProperties(VisualResourceOfD2BitmapBrush ^ parent)
+                : parent(parent),
+                  exX(ExtendModeParameter::EXTEND_MODE_WRAP),
+                  exY(ExtendModeParameter::EXTEND_MODE_WRAP),
+                  mode(BitmapInterpolationMode::BITMAP_INTERPOLATION_MODE_NEAREST_NEIGHBOR)
             {}
         };
 
@@ -58,7 +77,7 @@ namespace ControlOfDX
 #pragma region "fields"
     private:
         // 描画リソース
-        ID2D1Resource * instance;
+        ID2D1BitmapBrush * instance;
 
         // 描画ビットマップ
         VisualResourceOfBitmap ^ bitmap;
@@ -96,7 +115,7 @@ namespace ControlOfDX
         VisualResourceOfD2BitmapBrush(String ^ name, VisualResourceOfBitmap ^ bitmap)
             : VisualResource(name), bitmap(bitmap)
         {
-            this->properties = gcnew BitmapBrushProperties();
+            this->properties = gcnew BitmapBrushProperties(this);
         }
 
         /// <summary>デストラクタ。</summary>

@@ -186,6 +186,9 @@ namespace ControlOfDX
 
                 // ƒŠƒ\[ƒX‚ğÀ‘Ì‚É•ÏŠ·
                 for each (VisualResource ^ res in this->resources->Values) {
+                    res->PreparationImage(this->renderTarget);
+                }
+                for each (VisualResource ^ res in this->resources->Values) {
                     res->Preparation(this->renderTarget);
                 }
             }
