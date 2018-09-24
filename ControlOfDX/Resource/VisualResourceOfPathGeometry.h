@@ -4,6 +4,7 @@
 #include "../ControlOfDX.h"
 #include "../SingletonFactory.h"
 #include "VisualResource.h"
+#include "VisualResourceOfGeometry.h"
 
 namespace ControlOfDX
 {
@@ -12,7 +13,7 @@ namespace ControlOfDX
 
     /// <summary>パスジオメトリリソース。</summary>
 	public ref class VisualResourceOfPathGeometry
-		: public VisualResource
+		: public VisualResourceOfGeometry
 	{
 #pragma region "inner class"
 	public:
@@ -139,6 +140,14 @@ namespace ControlOfDX
 			!GeometrySink() {
 				this->~GeometrySink();
 			}
+
+        internal:
+            /// <summary>ジオメトリシンクを取得する。</summary>
+            /// <return>ジオメトリシンク。</return>
+            ID2D1GeometrySink * GetSink()
+            {
+                return this->sink;
+            }
 
 		public:
             /// <summary>このジオメトリシンクによって記述されたジオメトリの内部にある点と外部にある点を特定するために使用するメソッドを指定します。</summary>
@@ -277,7 +286,7 @@ namespace ControlOfDX
         /// <param name="name">リソース名。</param>
         /// <param name="factory">レンダーファクトリ。</param>
 		VisualResourceOfPathGeometry(String ^ name)
-			: VisualResource(name)
+			: VisualResourceOfGeometry(name)
 		{
             if (!SingletonFactory::GetDirect2DFactory()) {
                 throw gcnew ResourceException("パスジオメトリの作成に失敗しました");
@@ -336,7 +345,7 @@ namespace ControlOfDX
 
         /// <summary>パスジオメトリの実体を取得する。</summary>
         /// <return>パスジオメトリ。</return>
-        ID2D1PathGeometry * GetGeometry() {
+        ID2D1Geometry * GetGeometry() override {
             return this->geometry;
         }
 

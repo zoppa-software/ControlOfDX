@@ -3,6 +3,8 @@
 #include "../ControlOfDX.h"
 #include "../SingletonFactory.h"
 #include "VisualResource.h"
+#include "VisualResourceOfGeometry.h"
+#include "VisualResourceOfPathGeometry.h"
 
 namespace ControlOfDX
 {
@@ -11,7 +13,7 @@ namespace ControlOfDX
 
     /// <summary>円形ジオメトリリソース。</summary>
     public ref class VisualResourceOfEllipseGeometry
-        : public VisualResource
+        : public VisualResourceOfGeometry
     {
 #pragma region "fields"
     private:
@@ -27,7 +29,7 @@ namespace ControlOfDX
         /// <param name="ellipse">対象円形。</param>
         VisualResourceOfEllipseGeometry(String ^ name,
                                         Ellipse ellipse)
-            : VisualResource(name)
+            : VisualResourceOfGeometry(name)
         {
             if (!SingletonFactory::GetDirect2DFactory()) {
                 throw gcnew ResourceException("円形ジオメトリの作成に失敗しました");
@@ -56,7 +58,7 @@ namespace ControlOfDX
                                         PointF centerPoint,
                                         float radiusX,
                                         float radiusY)
-            : VisualResource(name)
+            : VisualResourceOfGeometry(name)
         {
             if (!SingletonFactory::GetDirect2DFactory()) {
                 throw gcnew ResourceException("円形ジオメトリの作成に失敗しました");
@@ -102,7 +104,7 @@ namespace ControlOfDX
 
         /// <summary>円形ジオメトリの実体を取得する。</summary>
         /// <return>円形ジオメトリ。</return>
-        ID2D1EllipseGeometry * GetGeometry() {
+        ID2D1Geometry * GetGeometry() override {
             return this->geometry;
         }
 
@@ -110,6 +112,12 @@ namespace ControlOfDX
         ID2D1Resource * GetInstance() override
         {
             return this->geometry;
+        }
+
+    public:
+        void CombineWithGeometry(VisualResourceOfGeometry ^ inputGeometry, CombineMode combineMode, VisualResourceOfPathGeometry::GeometrySink ^ sink)
+        {
+            this->geometry->CombineWithGeometry(inputGeometry->GetGeometry(), (D2D1_COMBINE_MODE)combineMode, 0, 0, sink->GetSink());
         }
 
 #pragma endregion

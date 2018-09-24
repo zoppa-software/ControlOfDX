@@ -132,6 +132,7 @@
     <ClInclude Include="ArcSize.h" />
     <ClInclude Include="BitmapInterpolationMode.h" />
     <ClInclude Include="CapStyle.h" />
+    <ClInclude Include="CombineMode.h" />
     <ClInclude Include="ControlOfDX.h" />
     <ClInclude Include="DashStyle.h" />
     <ClInclude Include="DWriteFontStretch.h" />
@@ -144,6 +145,7 @@
     <ClInclude Include="Figure\Layer.h" />
     <ClInclude Include="FillMode.h" />
     <ClInclude Include="ResourceException.h" />
+    <ClInclude Include="Resource\VisualResourceOfGeometry.h" />
     <ClInclude Include="Resource\VisualResourceOfD2BitmapBrush.h" />
     <ClInclude Include="Resource\VisualResourceOfEllipseGeometry.h" />
     <ClInclude Include="SingletonFactory.h" />

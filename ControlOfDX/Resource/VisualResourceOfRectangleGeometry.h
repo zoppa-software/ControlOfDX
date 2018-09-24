@@ -3,6 +3,7 @@
 #include "../ControlOfDX.h"
 #include "../SingletonFactory.h"
 #include "VisualResource.h"
+#include "VisualResourceOfGeometry.h"
 
 namespace ControlOfDX
 {
@@ -11,7 +12,7 @@ namespace ControlOfDX
 
     /// <summary>矩形ジオメトリリソース。</summary>
 	public ref class VisualResourceOfRectangleGeometry
-		: public VisualResource
+		: public VisualResourceOfGeometry
 	{
 #pragma region "fields"
 	private:
@@ -27,7 +28,7 @@ namespace ControlOfDX
         /// <param name="rectangle">対象矩形。</param>
 		VisualResourceOfRectangleGeometry(String ^ name,
                                           RectangleF rectangle)
-			: VisualResource(name)
+			: VisualResourceOfGeometry(name)
 		{
             if (!SingletonFactory::GetDirect2DFactory()) {
                 throw gcnew ResourceException("矩形ジオメトリの作成に失敗しました");
@@ -75,7 +76,7 @@ namespace ControlOfDX
 
         /// <summary>矩形ジオメトリの実体を取得する。</summary>
         /// <return>矩形ジオメトリ。</return>
-        ID2D1RectangleGeometry * GetGeometry() {
+        ID2D1Geometry * GetGeometry() override {
             return this->geometry;
         }
 

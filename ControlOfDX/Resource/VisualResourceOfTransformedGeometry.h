@@ -3,6 +3,7 @@
 #include "../ControlOfDX.h"
 #include "../SingletonFactory.h"
 #include "VisualResource.h"
+#include "VisualResourceOfGeometry.h"
 #include "VisualResourceOfPathGeometry.h"
 #include "VisualResourceOfRectangleGeometry.h"
 
@@ -13,7 +14,7 @@ namespace ControlOfDX
 
     /// <summary>変形ジオメトリリソース。</summary>
 	public ref class VisualResourceOfTransformedGeometry
-		: public VisualResource
+		: public VisualResourceOfGeometry
 	{
 #pragma region "fields"
 	private:
@@ -26,19 +27,19 @@ namespace ControlOfDX
 	public:
         /// <summary>コンストラクタ。</summary>
         /// <param name="name">リソース名。</param>
-        /// <param name="pathGeometry">パスジオメトリ。</param>
+        /// <param name="geometry">ジオメトリ。</param>
         /// <param name="matrix">変形量。</param>
 		VisualResourceOfTransformedGeometry(String ^ name,
-                                            VisualResourceOfPathGeometry ^ pathGeometry,
+                                            VisualResourceOfGeometry ^ geometry,
                                             Matrix matrix)
-			: VisualResource(name)
+			: VisualResourceOfGeometry(name)
 		{
             if (!SingletonFactory::GetDirect2DFactory()) {
                 throw gcnew ResourceException("変形ジオメトリの作成に失敗しました");
             }
 
 			ID2D1TransformedGeometry * geo;
-			HRESULT hr = SingletonFactory::GetDirect2DFactory()->CreateTransformedGeometry(pathGeometry->GetGeometry(), matrix.Convert(), &geo);
+			HRESULT hr = SingletonFactory::GetDirect2DFactory()->CreateTransformedGeometry(geometry->GetGeometry(), matrix.Convert(), &geo);
 			if (SUCCEEDED(hr)) {
 				this->geometry = geo;
 			}
@@ -46,29 +47,6 @@ namespace ControlOfDX
                 throw gcnew ResourceException("変形ジオメトリの作成に失敗しました");
 			}
 		}
-
-        /// <summary>コンストラクタ。</summary>
-        /// <param name="name">リソース名。</param>
-        /// <param name="recGeometry">矩形ジオメトリ。</param>
-        /// <param name="matrix">変形量。</param>
-        VisualResourceOfTransformedGeometry(String ^ name,
-                                            VisualResourceOfRectangleGeometry ^ recGeometry,
-                                            Matrix matrix)
-            : VisualResource(name)
-        {
-            if (!SingletonFactory::GetDirect2DFactory()) {
-                throw gcnew ResourceException("変形ジオメトリの作成に失敗しました");
-            }
-
-            ID2D1TransformedGeometry * geo;
-            HRESULT hr = SingletonFactory::GetDirect2DFactory()->CreateTransformedGeometry(recGeometry->GetGeometry(), matrix.Convert(), &geo);
-            if (SUCCEEDED(hr)) {
-                this->geometry = geo;
-            }
-            else {
-                throw gcnew ResourceException("変形ジオメトリの作成に失敗しました");
-            }
-        }
 
         /// <summary>デストラクタ。</summary>
         virtual ~VisualResourceOfTransformedGeometry()
@@ -98,7 +76,7 @@ namespace ControlOfDX
 
         /// <summary>変形ジオメトリの実体を取得する。</summary>
         /// <return>変形ジオメトリ。</return>
-        ID2D1TransformedGeometry * GetGeometry() {
+        ID2D1Geometry * GetGeometry() override {
             return this->geometry;
         }
 

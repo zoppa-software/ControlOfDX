@@ -177,6 +177,12 @@
     <ClInclude Include="Resource\VisualResourceOfEllipseGeometry.h">
       <Filter>Resource\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\VisualResourceOfGeometry.h">
+      <Filter>Resource\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="CombineMode.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">

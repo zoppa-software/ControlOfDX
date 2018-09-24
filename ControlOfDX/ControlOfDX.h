@@ -12,6 +12,7 @@
 #include "ArcSize.h"
 #include "BitmapInterpolationMode.h"
 #include "CapStyle.h"
+#include "CombineMode.h"
 #include "DashStyle.h"
 #include "DWriteFontStretch.h"
 #include "DWriteFontStyle.h"

@@ -194,8 +194,8 @@ namespace ControlOfDX
         }
 
         /// <summary>ストロークスタイルの実体を取得する。</summary>
-        /// <return>パスジオメトリ。</return>
-        ID2D1StrokeStyle * GetGeometry() {
+        /// <return>ストロークスタイル。</return>
+        ID2D1StrokeStyle * GetStrokeStyle() {
             return this->strokeStyle;
         }
 
