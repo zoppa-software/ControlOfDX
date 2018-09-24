@@ -144,6 +144,7 @@
     <ClInclude Include="Figure\Ellipse.h" />
     <ClInclude Include="Figure\Layer.h" />
     <ClInclude Include="FillMode.h" />
+    <ClInclude Include="GeometryRelation.h" />
     <ClInclude Include="ResourceException.h" />
     <ClInclude Include="Resource\VisualResourceOfGeometry.h" />
     <ClInclude Include="Resource\VisualResourceOfD2BitmapBrush.h" />

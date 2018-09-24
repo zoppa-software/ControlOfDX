@@ -183,6 +183,9 @@
     <ClInclude Include="CombineMode.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="GeometryRelation.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp">

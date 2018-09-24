@@ -22,6 +22,7 @@
 #include "FigureEnd.h"
 #include "FillMode.h"
 #include "GammaParameter.h"
+#include "GeometryRelation.h"
 #include "LayerOptions.h"
 #include "LineJoin.h"
 #include "OpacityMaskContent.h"

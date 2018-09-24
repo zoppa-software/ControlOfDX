@@ -114,12 +114,6 @@ namespace ControlOfDX
             return this->geometry;
         }
 
-    public:
-        void CombineWithGeometry(VisualResourceOfGeometry ^ inputGeometry, CombineMode combineMode, VisualResourceOfPathGeometry::GeometrySink ^ sink)
-        {
-            this->geometry->CombineWithGeometry(inputGeometry->GetGeometry(), (D2D1_COMBINE_MODE)combineMode, 0, 0, sink->GetSink());
-        }
-
 #pragma endregion
     };
 }
