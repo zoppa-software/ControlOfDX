@@ -145,6 +145,7 @@
     <ClInclude Include="FillMode.h" />
     <ClInclude Include="ResourceException.h" />
     <ClInclude Include="Resource\VisualResourceOfD2BitmapBrush.h" />
+    <ClInclude Include="Resource\VisualResourceOfEllipseGeometry.h" />
     <ClInclude Include="SingletonFactory.h" />
     <ClInclude Include="VisualControl.h" />
     <ClInclude Include="VisualForm.h" />

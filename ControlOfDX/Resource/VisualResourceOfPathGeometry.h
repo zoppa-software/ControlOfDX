@@ -195,6 +195,23 @@ namespace ControlOfDX
                 this->sink->AddArc(arc);
             }
 
+            /// <summary>円弧情報を指定して円弧を追加する。</summary>    
+            /// <param name="point">弧の終点。</param>
+            /// <param name="size">弧のX半径とY半径。</param>
+            /// <param name="rotationAngle">反時計回りに回転する角度。</param>
+            /// <param name="sweepDirection">時計回りか反時計回りかを指定する。</param>
+            /// <param name="arcSize">特定の弧が 180°より大きいか指定する。</param>
+            void AddArc(PointF point, SizeF size, float rotationAngle, SweepDirection sweepDirection, ArcSize arcSize)
+            {
+                D2D1_ARC_SEGMENT arc;
+                arc.point = D2D1::Point2F(point.X, point.Y);
+                arc.size = D2D1::SizeF(size.Width, size.Height);
+                arc.rotationAngle = rotationAngle;
+                arc.sweepDirection = (D2D1_SWEEP_DIRECTION)sweepDirection;
+                arc.arcSize = (D2D1_ARC_SIZE)arcSize;
+                this->sink->AddArc(arc);
+            }
+
             /// <summary>三点を指定してベジェ曲線を追加する。</summary>
             /// <param name="pos1">点1。</param>
             /// <param name="pos2">点2。</param>

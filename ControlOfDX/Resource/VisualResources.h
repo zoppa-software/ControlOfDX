@@ -12,6 +12,7 @@
 #include "VisualResourceOfRadialGradientBrush.h"
 #include "VisualResourceOfTextFormat.h"
 #include "VisualResourceOfStrokeStyle.h"
+#include "VisualResourceOfEllipseGeometry.h"
 #include "VisualResourceOfRectangleGeometry.h"
 #include "VisualResourceOfTransformedGeometry.h"
 
@@ -150,6 +151,30 @@ namespace ControlOfDX
         VisualResourceOfPathGeometry ^ CreatePathGeometry(String ^ name)
         {
             VisualResourceOfPathGeometry ^ res = gcnew VisualResourceOfPathGeometry(name);
+            this->items->Add(res->Name, res);
+            return res;
+        }
+
+        /// <summary>円形ジオメトリを作成する。</summary>
+        /// <param name="name">リソース名。</param>
+        /// <param name="ellipse">楕円情報。</param>
+        /// <return>リソース。</return>
+        VisualResourceOfEllipseGeometry ^ CreateEllipseGeometry(String ^ name, Ellipse ellipse)
+        {
+            VisualResourceOfEllipseGeometry ^ res = gcnew VisualResourceOfEllipseGeometry(name, ellipse);
+            this->items->Add(res->Name, res);
+            return res;
+        }
+
+        /// <summary>円形ジオメトリを作成する。</summary>
+        /// <param name="name">リソース名。</param>
+        /// <param name="center">中心位置。</param>
+        /// <param name = "radiusX">楕円 X半径。< / param>
+        /// <param name = "radiusY">楕円 Y半径。< / param>
+        /// <return>リソース。</return>
+        VisualResourceOfEllipseGeometry ^ CreateEllipseGeometry(String ^ name, PointF center, float radiusX, float radiusY)
+        {
+            VisualResourceOfEllipseGeometry ^ res = gcnew VisualResourceOfEllipseGeometry(name, center, radiusX, radiusY);
             this->items->Add(res->Name, res);
             return res;
         }

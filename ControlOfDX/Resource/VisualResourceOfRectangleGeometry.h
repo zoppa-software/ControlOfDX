@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../ControlOfDX.h"
+#include "../SingletonFactory.h"
 #include "VisualResource.h"
 
 namespace ControlOfDX
@@ -72,8 +73,8 @@ namespace ControlOfDX
 
         }
 
-        /// <summary>パスジオメトリの実体を取得する。</summary>
-        /// <return>パスジオメトリ。</return>
+        /// <summary>矩形ジオメトリの実体を取得する。</summary>
+        /// <return>矩形ジオメトリ。</return>
         ID2D1RectangleGeometry * GetGeometry() {
             return this->geometry;
         }
