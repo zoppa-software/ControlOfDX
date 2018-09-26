@@ -275,6 +275,15 @@ namespace ControlOfDX
         /// <param name="brush">描画に使用するブラシ。</param>
         void DrawText(String ^ text, VisualResource ^ format, RectangleF rect, VisualResource ^ brush);
 
+        /// <summary>書式情報を使用して、指定された文字列を描画します。</summary>
+        /// <param name="text">描画文字列。</param>
+        /// <param name="format">書式情報。</param>
+        /// <param name="rect">文字列が描画される領域のサイズと位置。</param>
+        /// <param name="brush">描画に使用するブラシ。</param>
+        /// <param name="drawTextOptions">段落テキストの配置を指定。</param>
+        /// <param name="measuringMode">描画に使用するブラシ。</param>
+        void DrawText(String ^ text, VisualResource ^ format, RectangleF rect, VisualResource ^ brush, DrawTextOptions drawTextOptions, DWriteMeasuringMode measuringMode);
+
         //this->renderTarget->DrawTextLayout;
         //this->renderTarget->FillRoundedRectangle;
 

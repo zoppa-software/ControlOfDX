@@ -27,6 +27,7 @@ namespace ControlOfDX
             : Exception(message, innerException)
         {}
 
+        /// <summary>デストラクタ。</summary>
         virtual ~InitializeException()
         {}
     };

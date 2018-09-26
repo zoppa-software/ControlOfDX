@@ -15,6 +15,7 @@
 #include "VisualResourceOfEllipseGeometry.h"
 #include "VisualResourceOfRectangleGeometry.h"
 #include "VisualResourceOfTransformedGeometry.h"
+#include "VisualResourceOfGeometryGroup.h"
 
 namespace ControlOfDX
 {
@@ -273,6 +274,19 @@ namespace ControlOfDX
                                                                         Matrix matrix)
         {
             VisualResourceOfTransformedGeometry ^ res = gcnew VisualResourceOfTransformedGeometry(name, pathGeometry, matrix);
+            this->items->Add(res->Name, res);
+            return res;
+        }
+
+        /// <summary>ジオメトリグループリソースを作成する。</summary>
+        /// <param name="name">リソース名。</param>
+        /// <param name="fillMode">リソース名。</param>
+        /// <param name="geometries">グループに含めるジオメトリリスト。</param>
+        VisualResourceOfGeometryGroup ^ CreateGeometryGroup(String ^ name,
+                                                            FillMode fillMode,
+                                                            IEnumerable<VisualResourceOfGeometry^>^ geometries)
+        {
+            VisualResourceOfGeometryGroup ^ res = gcnew VisualResourceOfGeometryGroup(name, fillMode, geometries);
             this->items->Add(res->Name, res);
             return res;
         }

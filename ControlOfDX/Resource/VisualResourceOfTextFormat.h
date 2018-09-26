@@ -15,6 +15,25 @@ namespace ControlOfDX
 	public ref class VisualResourceOfTextFormat
 		: public VisualResource
 	{
+#pragma region "inner class"
+
+    public:
+        /// <summary>レイアウトボックスのオーバーフローするテキストのトリミングオプションを指定します。</summary>
+        value class Trimming
+        {
+        public:
+            /// <summary>トリミングが適用されるテキスト細分性。</summary>
+            DWriteTrimmingGranularity granularity;
+
+            /// <summary>区切り文字として使用される文字コード</summary>
+            unsigned int delimiter;
+
+            /// <summary>デリミタが何回出現したかを戻します。</summary>
+            unsigned int delimiterCount;
+        };
+
+#pragma endregion
+
 #pragma region "fields"
 	private:
         // フォーマット実体
@@ -147,6 +166,107 @@ namespace ControlOfDX
         IUnknown * GetWriteInstance() override
         {
             return this->format;
+        }
+
+    public:
+        /// <summary>段落のテキストの方向を設定します。</summary>
+        /// <param name="flowDirection">段落のテキストの方向。</param>
+        void SetFlowDirection(DWriteFlowDirection flowDirection)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetFlowDirection((DWRITE_FLOW_DIRECTION)flowDirection);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("段落のテキストの方向設定失敗");
+                }
+            }
+        }
+
+        /// <summary>2つの隣接するタブストップ間の固定距離を設定します。</summary>
+        /// <param name="incrementalTabStop">タブストップ間の固定距離。</param>
+        void SetIncrementalTabStop(float incrementalTabStop)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetIncrementalTabStop(incrementalTabStop);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("タブストップ間の固定距離設定失敗");
+                }
+            }
+        }
+
+        /// <summary>行間を設定します。</summary>
+        /// <param name="lineSpacingMethod">行間の決定方法を指定します。</param>
+        /// <param name="lineSpacing">行間、つまりベースライン間の距離。</param> 
+        /// <param name="baseline">行の上部からベースラインまでの距離。lineSpacing に対する適切な比率は 80% です。</param> 
+        void SetLineSpacing(DWriteLineSpacingMethod lineSpacingMethod, float lineSpacing, float baseline)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetLineSpacing((DWRITE_LINE_SPACING_METHOD)lineSpacingMethod, lineSpacing, baseline);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("行間設定失敗");
+                }
+            }
+        }
+
+        /// <summary>レイアウトボックスの上端および下端を基準とした、段落の配置オプションを設定します。</summary>
+        /// <param name="paragraphAlignment">段落の配置オプション。</param>        
+        void SetParagraphAlignment(DWriteParagraphAlignment paragraphAlignment)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetParagraphAlignment((DWRITE_PARAGRAPH_ALIGNMENT)paragraphAlignment);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("段落の配置オプション設定失敗");
+                }
+            }
+        }
+
+        /// <summary>段落の読み取り方向を設定します。</summary>
+        /// <param name="readingDirection">テキストの配置オプション。</param>
+        void SetReadingDirection(DWriteReadingDirection readingDirection)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetReadingDirection((DWRITE_READING_DIRECTION)readingDirection);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("段落の読み取り方向設定失敗");
+                }
+            }
+        }
+
+        /// <summary>ボックスの上端および下端を基準として、段落内のテキストの配置を設定します。</summary>
+        /// <param name="textAligment">テキストの配置オプション。</param>
+        void SetTextAlignment(DWriteTextAligment textAligment)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetTextAlignment((DWRITE_TEXT_ALIGNMENT)textAligment);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("段落内のテキストの配置設定失敗");
+                }
+            }
+        }
+
+        /*
+        void SetTrimming(Trimming trimmingOptions)
+        {
+            if (this->format) {
+                DWRITE_TRIMMING trim;
+                trim.granularity = (DWRITE_TRIMMING_GRANULARITY)trimmingOptions.granularity;
+                trim.delimiter = trimmingOptions.delimiter;
+                trim.delimiterCount = trimmingOptions.delimiterCount;
+
+                this->format->SetTrimming(granularity, );
+            }
+        }
+        */
+
+        /// <summary>右端での折り返しオプションを設定します。</summary>
+        /// <param name="wordWrapping">右端での折り返しオプション。</param>
+        void SetWordWrapping(DWriteWordWrapping wordWrapping)
+        {
+            if (this->format) {
+                HRESULT hr = this->format->SetWordWrapping((DWRITE_WORD_WRAPPING)wordWrapping);
+                if (FAILED(hr)) {
+                    throw gcnew TextOptionException("右端での折り返しオプション設定失敗");
+                }
+            }
         }
 
 #pragma endregion

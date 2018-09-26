@@ -135,9 +135,18 @@
     <ClInclude Include="CombineMode.h" />
     <ClInclude Include="ControlOfDX.h" />
     <ClInclude Include="DashStyle.h" />
+    <ClInclude Include="DrawTextOptions.h" />
+    <ClInclude Include="DWriteFlowDirection.h" />
     <ClInclude Include="DWriteFontStretch.h" />
     <ClInclude Include="DWriteFontStyle.h" />
     <ClInclude Include="DWriteFontWeight.h" />
+    <ClInclude Include="DWriteLineSpacingMethod.h" />
+    <ClInclude Include="DWriteMeasuringMode.h" />
+    <ClInclude Include="DWriteParagraphAlignment.h" />
+    <ClInclude Include="DWriteReadingDirection.h" />
+    <ClInclude Include="DWriteTextAligment.h" />
+    <ClInclude Include="DWriteTrimmingGranularity.h" />
+    <ClInclude Include="DWriteWordWrapping.h" />
     <ClInclude Include="ExtendModeParameter.h" />
     <ClInclude Include="FigureBegin.h" />
     <ClInclude Include="FigureEnd.h" />
@@ -149,7 +158,10 @@
     <ClInclude Include="Resource\VisualResourceOfGeometry.h" />
     <ClInclude Include="Resource\VisualResourceOfD2BitmapBrush.h" />
     <ClInclude Include="Resource\VisualResourceOfEllipseGeometry.h" />
+    <ClInclude Include="Resource\VisualResourceOfGeometryGroup.h" />
+    <ClInclude Include="Resource\VisualResourceOfTextFormat.h" />
     <ClInclude Include="SingletonFactory.h" />
+    <ClInclude Include="TextOptionException.h" />
     <ClInclude Include="VisualControl.h" />
     <ClInclude Include="VisualForm.h" />
     <ClInclude Include="GammaParameter.h" />
@@ -169,7 +181,6 @@
     <ClInclude Include="Resource\VisualResourceOfRectangleGeometry.h" />
     <ClInclude Include="Resource\VisualResourceOfSolidColorBrush.h" />
     <ClInclude Include="Resource\VisualResourceOfStrokeStyle.h" />
-    <ClInclude Include="Resource\VisualResourceOfTextFormat.h" />
     <ClInclude Include="Resource\VisualResourceOfTransformedGeometry.h" />
     <ClInclude Include="Resource\VisualResources.h" />
     <ClInclude Include="stdafx.h" />

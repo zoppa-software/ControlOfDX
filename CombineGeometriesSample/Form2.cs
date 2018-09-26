@@ -124,22 +124,11 @@ namespace DrawRectangleExample
 
             var area = circleGeometry1.ComputeArea(Matrix.Identity());
             var length = circleGeometry1.ComputeLength(Matrix.Identity());
+
+            var pointAtLength = circleGeometry1.ComputePointAtLength(10);
+
+
             /*
-
-            D2D1_POINT_2F point;
-            D2D1_POINT_2F tangent;
-
-            hr = m_pCircleGeometry1->ComputePointAtLength(
-                10, 
-                NULL, 
-                &point, 
-                &tangent); 
-
-            if (SUCCEEDED(hr))
-            {
-                // Retrieve the point and tangent point.
-            }
-
             D2D1_RECT_F bounds;
 
             hr = m_pCircleGeometry1->GetBounds(

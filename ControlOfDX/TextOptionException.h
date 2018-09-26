@@ -4,31 +4,31 @@ namespace ControlOfDX
 {
     using namespace System;
 
-    /// <summary>リソース例外を表現する。</summary>
-    public ref class ResourceException
+    /// <summary>文字列描画オプション例外。</summary>
+    public ref class TextOptionException
         : Exception
     {
     public:
         /// <summary>デフォルトコンストラクタ。</summary>
-        ResourceException()
+        TextOptionException()
             : Exception()
         {}
 
         /// <summary>コンストラクタ。</summary>
         /// <param name="message">例外メッセージ。</param>
-        ResourceException(String ^ message)
+        TextOptionException(String ^ message)
             : Exception(message)
         {}
 
         /// <summary>コンストラクタ。</summary>
         /// <param name="message">例外メッセージ。</param>
         /// <param name="innerException">内部例外参照。</param>
-        ResourceException(String ^ message, Exception ^ innerException)
+        TextOptionException(String ^ message, Exception ^ innerException)
             : Exception(message, innerException)
         {}
 
         /// <summary>デストラクタ。</summary>
-        virtual ~ResourceException()
+        virtual ~TextOptionException()
         {}
     };
 }

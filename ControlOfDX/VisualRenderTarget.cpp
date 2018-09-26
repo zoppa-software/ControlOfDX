@@ -368,6 +368,22 @@ namespace ControlOfDX
         }
     }
 
+    void VisualRenderTarget::DrawText(String ^ text, VisualResource ^ format, RectangleF rect, VisualResource ^ brush, DrawTextOptions drawTextOptions, DWriteMeasuringMode measuringMode)
+    {
+        if (format != nullptr && brush != nullptr) {
+            pin_ptr<const wchar_t> txt = (text != nullptr ? PtrToStringChars(text) : (WCHAR*)NULL);
+            D2D1_RECT_F rec = D2D1::RectF(rect.Left, rect.Top, rect.Right, rect.Bottom);
+
+            this->renderTarget->DrawText(txt,
+                                         text->Length,
+                                         (IDWriteTextFormat*)format->GetWriteInstance(),
+                                         rec,
+                                         (ID2D1Brush*)brush->GetInstance(),
+                                         (D2D1_DRAW_TEXT_OPTIONS)drawTextOptions,
+                                         (DWRITE_MEASURING_MODE)measuringMode);
+        }
+    }
+
     //this->renderTarget->DrawTextLayout;
     //this->renderTarget->FillRoundedRectangle;
 

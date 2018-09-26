@@ -40,6 +40,12 @@
     <Filter Include="Exception">
       <UniqueIdentifier>{454af787-1931-4496-bf72-de3cb6f45955}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enums\DWrite">
+      <UniqueIdentifier>{b187b8b7-9f4b-4f03-a673-30601a813f91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Enums\D2D">
+      <UniqueIdentifier>{38312b85-6ecb-49c7-89cd-615a65e46317}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -53,57 +59,6 @@
     </ClInclude>
     <ClInclude Include="ControlOfDX.h">
       <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="AntialiasMode.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="ArcSize.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="BitmapInterpolationMode.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="CapStyle.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="DashStyle.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="DWriteFontStretch.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="DWriteFontStyle.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="DWriteFontWeight.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="ExtendModeParameter.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="FigureBegin.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="FigureEnd.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="FillMode.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="GammaParameter.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="LayerOptions.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="LineJoin.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="OpacityMaskContent.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="SweepDirection.h">
-      <Filter>Enums</Filter>
     </ClInclude>
     <ClInclude Include="Resource\VisualResource.h">
       <Filter>Resource</Filter>
@@ -144,9 +99,6 @@
     <ClInclude Include="Resource\VisualResourceOfTransformedGeometry.h">
       <Filter>Resource\Geometry</Filter>
     </ClInclude>
-    <ClInclude Include="Resource\VisualResourceOfTextFormat.h">
-      <Filter>Resource\Text</Filter>
-    </ClInclude>
     <ClInclude Include="VisualRenderTarget.h">
       <Filter>Render</Filter>
     </ClInclude>
@@ -180,11 +132,98 @@
     <ClInclude Include="Resource\VisualResourceOfGeometry.h">
       <Filter>Resource\Geometry</Filter>
     </ClInclude>
+    <ClInclude Include="Resource\VisualResourceOfGeometryGroup.h">
+      <Filter>Resource\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteFlowDirection.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteFontStretch.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteFontStyle.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteFontWeight.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteLineSpacingMethod.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteMeasuringMode.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteParagraphAlignment.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteReadingDirection.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteTextAligment.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteWordWrapping.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="AntialiasMode.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcSize.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapInterpolationMode.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="CapStyle.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
     <ClInclude Include="CombineMode.h">
-      <Filter>Enums</Filter>
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="DashStyle.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawTextOptions.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtendModeParameter.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureBegin.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureEnd.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="FillMode.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="GammaParameter.h">
+      <Filter>Enums\D2D</Filter>
     </ClInclude>
     <ClInclude Include="GeometryRelation.h">
-      <Filter>Enums</Filter>
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="LayerOptions.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="LineJoin.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="OpacityMaskContent.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="SweepDirection.h">
+      <Filter>Enums\D2D</Filter>
+    </ClInclude>
+    <ClInclude Include="DWriteTrimmingGranularity.h">
+      <Filter>Enums\DWrite</Filter>
+    </ClInclude>
+    <ClInclude Include="TextOptionException.h">
+      <Filter>Exception</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\VisualResourceOfTextFormat.h">
+      <Filter>Resource\Text</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

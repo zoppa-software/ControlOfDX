@@ -267,6 +267,17 @@ namespace ControlOfDX
             }
         };
 
+        /// <summary>ComputePointAtLength用、戻り値。</summary>
+        value class PointAtLength
+        {
+        public:
+            /// <summary>ジオメトリに沿って指定された距離だけ離れた位置。ジオメトリが空の場合、この点にはその X と Y の値として NaN が格納されます。</summary>
+            PointF point;
+
+            /// <summary>このメソッドが返されるときに、ジオメトリに沿って指定された距離だけ離れた位置にある接線ベクトルへのポインターが格納されます。ジオメトリが空の場合、このベクトルにはその X と Y の値として NaN が格納されます。このパラメーターに記憶域を割り当てる必要があります。</summary>
+            PointF unitTangentVector;
+        };
+
 #pragma endregion
 
 #pragma region "constructor/destructor"
@@ -386,6 +397,74 @@ namespace ControlOfDX
             HRESULT hr = this->GetGeometry()->ComputeLength(matrix, &length);
             return (SUCCEEDED(hr) ? length : -1);
         }
+
+        /// <summary>ジオメトリが指定された行列で変換され、既定の許容範囲でフラット化された後、そのジオメトリに沿って指定された距離だけ離れた位置にある点と接線ベクトルを計算します。</summary>
+        /// <param name="length">検出される点と接線までのジオメトリに沿った距離。</param>
+        /// <param name="worldTransform">指定された点と接線を計算する前にジオメトリに適用する変換。</param>
+        /// <return>点と接線ベクトル。</return>
+        PointAtLength ComputePointAtLength(float length, Matrix worldTransform)
+        {
+            PointAtLength res;
+            D2D1_MATRIX_3X2_F matrix = worldTransform.Convert();
+            D2D1_POINT_2F point;
+            D2D1_POINT_2F unitTangentVector;
+
+            HRESULT hr = this->GetGeometry()->ComputePointAtLength(length, &matrix, &point, &unitTangentVector);
+            if (SUCCEEDED(hr)) {
+                res.point.X = point.x;
+                res.point.Y = point.y;
+                res.unitTangentVector.X = unitTangentVector.x;
+                res.unitTangentVector.Y = unitTangentVector.y;
+            }
+            else {
+                res.point.X = float::NaN;
+                res.point.Y = float::NaN;
+                res.unitTangentVector.X = float::NaN;
+                res.unitTangentVector.Y = float::NaN;
+            }
+            return res;
+        }
+
+        /// <summary>ジオメトリが指定された行列で変換され、既定の許容範囲でフラット化された後、そのジオメトリに沿って指定された距離だけ離れた位置にある点と接線ベクトルを計算します。</summary>
+        /// <param name="length">検出される点と接線までのジオメトリに沿った距離。</param>
+        /// <return>点と接線ベクトル。</return>
+        PointAtLength ComputePointAtLength(float length)
+        {
+            PointAtLength res;
+            D2D1_POINT_2F point;
+            D2D1_POINT_2F unitTangentVector;
+
+            HRESULT hr = this->GetGeometry()->ComputePointAtLength(length, 0, &point, &unitTangentVector);
+            if (SUCCEEDED(hr)) {
+                res.point.X = point.x;
+                res.point.Y = point.y;
+                res.unitTangentVector.X = unitTangentVector.x;
+                res.unitTangentVector.Y = unitTangentVector.y;
+            }
+            else {
+                res.point.X = float::NaN;
+                res.point.Y = float::NaN;
+                res.unitTangentVector.X = float::NaN;
+                res.unitTangentVector.Y = float::NaN;
+            }
+            return res;
+        }
+
+        /*
+        void ooo()
+        {
+            this->GetGeometry()->FillContainsPoint;
+            this->GetGeometry()->GetBounds;
+            this->GetGeometry()->GetFactory();
+            this->GetGeometry()->GetWidenedBounds();
+            this->GetGeometry()->Outline();
+            this->GetGeometry()->QueryInterface();
+            this->GetGeometry()->Simplify();
+            this->GetGeometry()->StrokeContainsPoint();
+            this->GetGeometry()->Tessellate();
+            this->GetGeometry()->Widen();
+        }
+        */
 
 #pragma endregion
 
